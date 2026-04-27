@@ -4,120 +4,130 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pricing Page</title>
-  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #f0f0f0;
+      text-align: center;
+      padding: 20px;
+    }
+
+    main {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 20px;
+    }
+
+    .plan {
+      background: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin: 15px;
+      padding: 20px;
+      width: 280px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .plan:hover {
+      transform: scale(1.05);
+    }
+
+    .price {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .highlight {
+      border: 2px solid #007bff;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 15px;
+    }
+  </style>
 </head>
+
 <body>
-  <header>
-    <h1>Pricing Plans</h1>
-  </header>
-  <main>
-    <section class="pricing">
-      <div class="plan">
-        <h2>Basic</h2>
-        <p class="price">$10/month</p>
-        <ul>
-          <li>Feature 1</li>
-          <li>Feature 2</li>
-          <li>Feature 3</li>
-        </ul>
-        <button>Select</button>
-      </div>
-      <div class="plan">
-        <h2>Pro</h2>
-        <p class="price">$20/month</p>
-        <ul>
-          <li>Feature 1</li>
-          <li>Feature 2</li>
-          <li>Feature 3</li>
-          <li>Feature 4</li>
-        </ul>
-        <button>Select</button>
-      </div>
-      <div class="plan">
-        <h2>Premium</h2>
-        <p class="price">$30/month</p>
-        <ul>
-          <li>Feature 1</li>
-          <li>Feature 2</li>
-          <li>Feature 3</li>
-          <li>Feature 4</li>
-          <li>Feature 5</li>
-        </ul>
-        <button>Select</button>
-      </div>
-    </section>
-  </main>
-  <footer>
-    <p>&copy; 2024 Pricing Page</p>
-  </footer>
+
+<header>
+  <h1>Pricing Plans</h1>
+</header>
+
+<main>
+
+  <div class="plan">
+    <h2>Basic</h2>
+    <p class="price">$10/month</p>
+    <ul>
+      <li>1 User</li>
+      <li>Basic Support</li>
+      <li>Limited Access</li>
+    </ul>
+    <button onclick="selectPlan('Basic')">Select</button>
+  </div>
+
+  <div class="plan highlight">
+    <h2>Pro ⭐</h2>
+    <p class="price">$20/month</p>
+    <ul>
+      <li>5 Users</li>
+      <li>Priority Support</li>
+      <li>Full Access</li>
+    </ul>
+    <button onclick="selectPlan('Pro')">Select</button>
+  </div>
+
+  <div class="plan">
+    <h2>Premium</h2>
+    <p class="price">$30/month</p>
+    <ul>
+      <li>Unlimited Users</li>
+      <li>24/7 Support</li>
+      <li>All Features</li>
+    </ul>
+    <button onclick="selectPlan('Premium')">Select</button>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 Pricing Page</p>
+</footer>
+
+<script>
+  function selectPlan(plan) {
+    alert("You selected " + plan + " plan");
+  }
+</script>
+
 </body>
 </html>
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-header {
-  background-color: #f0f0f0;
-  text-align: center;
-  padding: 20px 0;
-}
-
-main {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  padding: 20px;
-}
-
-.plan {
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin: 20px;
-  padding: 20px;
-  text-align: center;
-  width: 300px;
-}
-
-.plan h2 {
-  color: #333;
-}
-
-.plan p {
-  font-size: 20px;
-  color: #666;
-}
-
-.plan ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.plan li {
-  margin-bottom: 10px;
-}
-
-.plan button {
-  background-color: #007bff;
-  border: none;
-  border-radius: 4px;
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-  padding: 10px 20px;
-  transition: background-color 0.3s ease;
-}
-
-.plan button:hover {
-  background-color: #0056b3;
-}
-
-footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 20px 0;
-}
