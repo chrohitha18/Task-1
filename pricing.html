@@ -3,19 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pricing Page</title>
+  <title>Pricing Plans</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
+      background: #f4f6f8;
     }
 
     header {
-      background-color: #f0f0f0;
+      background-color: #ffffff;
       text-align: center;
-      padding: 20px;
+      padding: 25px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      margin: 0;
     }
 
     main {
@@ -23,44 +32,54 @@
       justify-content: center;
       flex-wrap: wrap;
       padding: 20px;
+      gap: 20px;
     }
 
     .plan {
-      background: #f9f9f9;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      margin: 15px;
-      padding: 20px;
-      width: 280px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      padding: 25px;
+      width: 300px;
       text-align: center;
-      transition: transform 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .plan:hover {
-      transform: scale(1.05);
-    }
-
-    .price {
-      font-size: 24px;
-      font-weight: bold;
+      transform: translateY(-5px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
     }
 
     .highlight {
       border: 2px solid #007bff;
     }
 
+    .price {
+      font-size: 28px;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+
     ul {
       list-style: none;
       padding: 0;
+      margin: 15px 0;
+    }
+
+    ul li {
+      margin: 8px 0;
     }
 
     button {
       background: #007bff;
       color: white;
       border: none;
-      padding: 10px 15px;
+      padding: 12px 18px;
       cursor: pointer;
-      border-radius: 5px;
+      border-radius: 6px;
+      font-size: 14px;
+      width: 100%;
+      transition: background 0.3s;
     }
 
     button:hover {
@@ -68,10 +87,18 @@
     }
 
     footer {
-      background: #333;
+      background: #222;
       color: white;
       text-align: center;
       padding: 15px;
+      margin-top: 30px;
+    }
+
+    /* Mobile optimization */
+    @media (max-width: 600px) {
+      .plan {
+        width: 90%;
+      }
     }
   </style>
 </head>
@@ -80,11 +107,12 @@
 
 <header>
   <h1>Pricing Plans</h1>
+  <p>Select the plan that fits your needs</p>
 </header>
 
-<main>
+<main id="plansContainer">
 
-  <div class="plan">
+  <div class="plan" data-plan="Basic">
     <h2>Basic</h2>
     <p class="price">$10/month</p>
     <ul>
@@ -92,10 +120,10 @@
       <li>Basic Support</li>
       <li>Limited Access</li>
     </ul>
-    <button onclick="selectPlan('Basic')">Select</button>
+    <button>Select</button>
   </div>
 
-  <div class="plan highlight">
+  <div class="plan highlight" data-plan="Pro">
     <h2>Pro ⭐</h2>
     <p class="price">$20/month</p>
     <ul>
@@ -103,10 +131,10 @@
       <li>Priority Support</li>
       <li>Full Access</li>
     </ul>
-    <button onclick="selectPlan('Pro')">Select</button>
+    <button>Select</button>
   </div>
 
-  <div class="plan">
+  <div class="plan" data-plan="Premium">
     <h2>Premium</h2>
     <p class="price">$30/month</p>
     <ul>
@@ -114,7 +142,7 @@
       <li>24/7 Support</li>
       <li>All Features</li>
     </ul>
-    <button onclick="selectPlan('Premium')">Select</button>
+    <button>Select</button>
   </div>
 
 </main>
@@ -124,8 +152,42 @@
 </footer>
 
 <script>
-  function selectPlan(plan) {
-    alert("You selected " + plan + " plan");
+  const buttons = document.querySelectorAll(".plan button");
+
+  buttons.forEach(button => {
+    button.addEventListener("click", (e) => {
+      const planCard = e.target.closest(".plan");
+      const planName = planCard.getAttribute("data-plan");
+
+      handlePlanSelection(planName);
+    });
+  });
+
+  function handlePlanSelection(plan) {
+    // Simulating real logic
+    console.log("Selected plan:", plan);
+
+    // UI feedback instead of alert
+    showMessage(`You selected ${plan} plan`);
+  }
+
+  function showMessage(message) {
+    let msg = document.createElement("div");
+    msg.innerText = message;
+
+    msg.style.position = "fixed";
+    msg.style.bottom = "20px";
+    msg.style.right = "20px";
+    msg.style.background = "#007bff";
+    msg.style.color = "#fff";
+    msg.style.padding = "12px 18px";
+    msg.style.borderRadius = "6px";
+
+    document.body.appendChild(msg);
+
+    setTimeout(() => {
+      msg.remove();
+    }, 3000);
   }
 </script>
 
